@@ -1,42 +1,148 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+  font-family: 'Unbounded', sans-serif; /* Default font for the rest of the app */
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  background-color: #f5f5dc; /* Light beige background */
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Arrange children vertically */
+  align-items: center; /* Center horizontally */
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'Unbounded', sans-serif; /* Use Unbounded for body text */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  height: 100vh; /* Full height of the viewport */
+  text-align: center; /* Center text inside */
+  overflow-y: auto; /* Allow vertical scrolling */
+  padding-bottom: 20px; /* Add some padding at the bottom */
+}
+
+/* Sticky header */
+h1 {
+  font-family: 'Rubik Bubbles', cursive; /* Apply the Rubik Bubbles font */
+  font-size: 3.2em;
+  line-height: 1.1;
+  position: sticky;
+  top: 0; /* Stick to the top */
+  background-color: #f5f5dc; /* Background color to prevent overlap */
+  z-index: 100; /* Ensure it stays on top */
+}
+
+/* Style for paragraph text with Unbounded font and light green color */
+p {
+  font-family: 'Unbounded', sans-serif; /* Apply Unbounded font */
+  color: #98fb98; /* Light green color for paragraphs */
+  font-size: 1.2em; /* Slightly larger font size for readability */
+  line-height: 1.6; /* Increase line height for better spacing */
+  margin: 15px 0; /* Add some space above and below */
+  text-align: center; /* Center align paragraph text */
+}
+
+
+/* Sticky form */
+.new-note-form {
+  margin: 20px 0; /* Margin for spacing */
+  width: 90%; /* Make it responsive */
+  max-width: 400px; /* Set a max width */
+  position: sticky;
+  top: 60px; /* Adjust based on the height of your header */
+  background-color: #f5f5dc; /* Same background color */
+  z-index: 99; /* Ensure it stays on top of notes */
+  border: 2px solid #90ee90; /* Light green border for visibility */
+  border-radius: 8px; /* Rounded corners for form */
+}
+
+/* Style for notes */
+.notes-list {
+  display: flex; /* Flexbox for responsiveness */
+  flex-wrap: wrap; /* Allow wrapping of notes */
+  justify-content: center; /* Center notes in the container */
+  width: 100%; /* Ensure it takes full width */
+}
+
+.note {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: calc(300px - 20px); /* Set a fixed width for notes with margin consideration */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow */
+  opacity: 0; /* Initial opacity for animation */
+  animation: fadeIn 0.5s forwards; /* Animation on submission */
+  transition: transform 0.2s ease-in-out; /* Add transition for emphasis */
+  background-color: #e6ffed; /* Light green background for notes */
+  font-family: 'Unbounded', sans-serif; /* Apply Unbounded to notes */
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9); /* Slightly scale down */
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 1;
+    transform: scale(1); /* Scale back to normal */
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Add emphasis on submission */
+.note:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+/* New note form styles */
+.new-note-form input,
+.new-note-form textarea {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Add some rounding */
+}
+
+.new-note-form button {
+  padding: 10px 20px;
+  background-color: green; /* Change button color to green */
+  color: white; /* Text color for the button */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Add some rounding */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.new-note-form button:hover {
+  background-color: darkgreen; /* Darker green on hover */
+}
+
+/* Style for paragraph text with light green color */
+p {
+  color: #98fb98; /* Light green color for paragraphs */
+  font-family: 'Unbounded', sans-serif; /* Apply Unbounded font */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.5em; /* Reduce font size on smaller screens */
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .note {
+    width: calc(100% - 20px); /* Full width on smaller screens */
+  }
 
-.read-the-docs {
-  color: #888;
+  .new-note-form {
+    width: 95%; /* Ensure form is responsive on smaller screens */
+  }
 }

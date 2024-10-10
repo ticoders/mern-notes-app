@@ -1,14 +1,16 @@
 import React from 'react';
-import Note from './note';
 
-function NoteList({ notes }) {
+const NoteList = ({ notes }) => {
   return (
-    <div className="note-list">
+    <div className="notes-list">
       {notes.map((note, index) => (
-        <Note key={index} title={note.title} content={note.content} />
+        <div className="note" key={index}>
+          <h2>{note.title}</h2>
+          <p>{note.content}</p>
+        </div>
       ))}
     </div>
   );
-}
+};
 
 export default NoteList;

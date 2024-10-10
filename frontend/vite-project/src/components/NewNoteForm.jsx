@@ -1,37 +1,34 @@
 import React, { useState } from 'react';
 
-function NewNoteForm({ addNote }) {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+const NewNoteForm = ({ addNote }) => {
+  const [noteTitle, setNoteTitle] = useState('');
+  const [noteContent, setNoteContent] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addNote({
-      title,
-      content,
-    });
-    setTitle('');
-    setContent('');
+    if (noteTitle && noteContent) {
+      addNote({ title: noteTitle, content: noteContent });
+      setNoteTitle('');
+      setNoteContent('');
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="new-note-form">
+    <form className="new-note-form" onSubmit={handleSubmit}>
       <input
         type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Note Title"
-        required
+        placeholder="Area of Focus"
+        value={noteTitle}
+        onChange={(e) => setNoteTitle(e.target.value)}
       />
       <textarea
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder="Note Content"
-        required
+        placeholder="Affirmation"
+        value={noteContent}
+        onChange={(e) => setNoteContent(e.target.value)}
       />
-      <button type="submit">Add Note</button>
+      <button type="submit"> Affirm </button>
     </form>
   );
-}
+};
 
 export default NewNoteForm;
