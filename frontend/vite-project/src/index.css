@@ -19,6 +19,7 @@ body {
 
 .App {
   display: flex;
+  color:green;
   flex-direction: column;
   align-items: center; /* Center horizontally */
   height: 100vh; /* Full height of the viewport */

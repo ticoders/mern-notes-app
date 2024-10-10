@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <h1>Daily Affirmations</h1>
-      <p>Write and Add your affirmations to the page.</p>
+      <p><strong>Welcome! </strong>I applaud you for choosing to feed your self care. Add your affirmations to the page by clicking affirm.</p>
       <NewNoteForm addNote={addNote} />
       <NoteList notes={notes} />
     </div>
